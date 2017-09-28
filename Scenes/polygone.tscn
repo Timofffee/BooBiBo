@@ -1,0 +1,566 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://tl.tres" type="TileSet" id=1]
+[ext_resource path="res://Art/buttons/gamepad/GB_LEFT.png" type="Texture" id=2]
+[ext_resource path="res://Art/buttons/gamepad/GB_DOWN.png" type="Texture" id=3]
+[ext_resource path="res://Art/buttons/gamepad/GB_RIGHT.png" type="Texture" id=4]
+[ext_resource path="res://Art/buttons/gamepad/GB_UP.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/dpcomic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Art/buttons/keyboard/KB_Z.png" type="Texture" id=7]
+[ext_resource path="res://Art/buttons/gamepad/GB_A.png" type="Texture" id=8]
+[ext_resource path="res://Art/buttons/keyboard/KB_X.png" type="Texture" id=9]
+[ext_resource path="res://Art/buttons/gamepad/GB_B.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Art/bg_bg.png" type="Texture" id=12]
+[ext_resource path="res://Art/bg_water/bg_water3.png" type="Texture" id=13]
+[ext_resource path="res://Art/bg_water/bg_water1.png" type="Texture" id=14]
+[ext_resource path="res://Art/bg_water/bg_water2.png" type="Texture" id=15]
+[ext_resource path="res://Art/clouds.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/cam.gd" type="Script" id=17]
+[ext_resource path="res://Scenes/enemy/grecri.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/enemy/redcri.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=2]
+
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite4:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ) ]
+}
+
+[node name="polygone" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+editor/display_folded = true
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1024
+collision_mask = 1038
+occluder_light_mask = 1
+tile_data = PoolIntArray( -1245163, 49, -1114122, 21, -1179645, 53, -1179627, 58, -1048586, 30, -1114109, 62, -1114091, 58, -983050, 30, -1048573, 62, -1048568, 53, -1048555, 58, -917514, 30, -983037, 62, -983033, 0, -983032, 1, -983031, 1, -983030, 1, -983029, 1, -983028, 1, -983027, 1, -983026, 1, -983025, 1, -983024, 1, -983023, 1, -983022, 1, -983021, 1, -983020, 1, -983019, 58, -983018, 2, -851978, 30, -917501, 62, -917497, 10, -917496, 11, -917495, 11, -917494, 11, -917493, 11, -917492, 11, -917491, 11, -917490, 11, -917489, 11, -917488, 11, -917487, 11, -917486, 11, -917485, 11, -917484, 11, -917483, 58, -917482, 16, -786442, 30, -851965, 62, -851960, 62, -851947, 58, -720906, 30, -720903, 17, -786431, 17, -786429, 62, -786424, 62, -786411, 58, -655370, 30, -655367, 26, -655366, 33, -655365, 33, -655364, 33, -655363, 33, -655362, 33, -655361, 33, -720896, 34, -720895, 26, -720893, 62, -720888, 62, -720875, 56, -589834, 30, -589831, 26, -589830, 43, -589829, 43, -589828, 43, -589827, 43, -589826, 43, -589825, 43, -655360, 48, -655359, 26, -655357, 62, -655352, 62, -524298, 30, -524295, 26, -589823, 26, -589821, 62, -589816, 62, -458762, 30, -458759, 26, -524287, 26, -524285, 62, -524280, 62, -393226, 30, -393223, 26, -458751, 26, -458749, 60, -458745, 4, -458744, 5, -458743, 6, -458739, 32, -458738, 33, -458737, 33, -458736, 33, -458735, 33, -458734, 33, -458733, 33, -458732, 33, -458731, 33, -458730, 33, -458729, 34, -327690, 30, -327687, 24, -393215, 26, -393209, 7, -393208, 12, -393207, 13, -393203, 42, -393202, 43, -393201, 43, -393200, 43, -393199, 43, -393198, 43, -393197, 43, -393196, 43, -393195, 43, -393194, 43, -393193, 48, -262154, 30, -262146, 50, -262145, 59, -327680, 59, -327679, 26, -327678, 59, -327677, 59, -327676, 59, -327675, 59, -327674, 59, -327673, 7, -327672, 12, -327671, 13, -327670, 51, -196618, 30, -196615, 49, -262143, 24, -262137, 14, -262136, 15, -262135, 20, -131083, 54, -131082, 63, -131081, 63, -131080, 63, -131079, 58, -131078, 55, -196603, 25, -196600, 60, -196596, 61, -196593, 18, -196592, 19, -196588, 18, -196587, 27, -196586, 27, -196585, 19, -65546, 28, -65543, 56, -65540, 29, -131072, 25, -65533, 21, -65517, 36, -65516, 37, -65515, 37, -65514, 37, -65513, 37, -65512, 38, 65534, 36, 65535, 37, 0, 37, 1, 37, 2, 38, 3, 30, 5, 17, 13, 4, 14, 5, 15, 5, 16, 6, 19, 39, 20, 44, 21, 44, 22, 44, 23, 44, 24, 45, 131065, 50, 131066, 59, 131067, 59, 131068, 59, 131069, 59, 131070, 39, 131071, 44, 65536, 44, 65537, 44, 65538, 45, 65539, 30, 65540, 59, 65541, 26, 65542, 59, 65543, 59, 65544, 59, 65545, 59, 65546, 51, 65549, 14, 65550, 15, 65551, 15, 65552, 20, 65555, 46, 65556, 47, 65557, 47, 65558, 47, 65559, 47, 65560, 52, 196606, 39, 196607, 44, 131072, 44, 131073, 44, 131074, 45, 131075, 30, 131077, 24, 262142, 46, 262143, 47, 196608, 47, 196609, 47, 196610, 52, 196611, 30, 262147, 28 )
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="TileMap"]
+
+position = Vector2( 586, -531 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="TileMap"]
+
+modulate = Color( 1, 1, 1, 0.349216 )
+position = Vector2( 596, -522 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="TileMap"]
+
+position = Vector2( 606, -531 )
+texture = ExtResource( 4 )
+
+[node name="Sprite4" type="Sprite" parent="TileMap"]
+
+modulate = Color( 1, 1, 1, 0.349216 )
+position = Vector2( 596, -540 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="TileMap"]
+
+margin_left = 619.0
+margin_top = -538.0
+margin_right = 659.0
+margin_bottom = -524.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.987061, 0.792969, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "MOVE"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Sprite5" type="Sprite" parent="TileMap"]
+
+position = Vector2( 318, -532 )
+texture = ExtResource( 7 )
+
+[node name="Sprite6" type="Sprite" parent="TileMap"]
+
+position = Vector2( 338, -532 )
+texture = ExtResource( 8 )
+
+[node name="Label2" type="Label" parent="TileMap"]
+
+margin_left = 351.0
+margin_top = -539.0
+margin_right = 391.0
+margin_bottom = -523.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.987061, 0.792969, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "JUMP"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Label3" type="Label" parent="TileMap"]
+
+margin_left = -35.0
+margin_top = -219.0
+margin_right = 30.0
+margin_bottom = -203.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.987061, 0.792969, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "WALL jump"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Sprite7" type="Sprite" parent="TileMap"]
+
+position = Vector2( -37, -193 )
+texture = ExtResource( 2 )
+
+[node name="Sprite8" type="Sprite" parent="TileMap"]
+
+position = Vector2( -27, -182 )
+texture = ExtResource( 4 )
+
+[node name="Sprite10" type="Sprite" parent="TileMap"]
+
+position = Vector2( 4, -194 )
+texture = ExtResource( 7 )
+
+[node name="Sprite9" type="Sprite" parent="TileMap"]
+
+position = Vector2( 18, -181 )
+texture = ExtResource( 8 )
+
+[node name="Label4" type="Label" parent="TileMap"]
+
+margin_left = -15.0
+margin_top = -196.0
+margin_right = -6.0
+margin_bottom = -180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.987061, 0.792969, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "+"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Sprite12" type="Sprite" parent="TileMap"]
+
+position = Vector2( -47, -417 )
+texture = ExtResource( 9 )
+
+[node name="Sprite11" type="Sprite" parent="TileMap"]
+
+position = Vector2( -27, -417 )
+texture = ExtResource( 10 )
+
+[node name="Label5" type="Label" parent="TileMap"]
+
+margin_left = -14.0
+margin_top = -424.0
+margin_right = 26.0
+margin_bottom = -408.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.987061, 0.792969, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "Shoot"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Label6" type="Label" parent="TileMap"]
+
+margin_left = 715.0
+margin_top = -271.0
+margin_right = 755.0
+margin_bottom = -255.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.987061, 0.792969, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "nice!"
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="player" parent="." instance=ExtResource( 11 )]
+
+position = Vector2( 609, -493 )
+collision_mask = 3
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = true
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.1, 0.05 )
+motion_offset = Vector2( 0, 120 )
+motion_mirroring = Vector2( 512, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+
+position = Vector2( 256, 16 )
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+
+position = Vector2( 0, 32 )
+texture = ExtResource( 13 )
+offset = Vector2( 256, 16 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 512, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/ParallaxLayer5"]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/water = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "water"
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( 0, -50 )
+motion_mirroring = Vector2( 400, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+
+position = Vector2( 86, -10 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 1
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+
+position = Vector2( 219, 25 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 1
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+
+position = Vector2( 326, -42 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 1
+_sections_unfolded = [ "Animation" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.2, 0.2 )
+motion_offset = Vector2( 0, -40 )
+motion_mirroring = Vector2( 400, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+position = Vector2( 49, 13 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+position = Vector2( 112, 2 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+
+position = Vector2( 149, 34 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.3, 0.2 )
+motion_offset = Vector2( 0, -40 )
+motion_mirroring = Vector2( 400, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+
+position = Vector2( 57, 37 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+
+position = Vector2( 190, 40 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+
+position = Vector2( 345, 9 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+
+editor/display_folded = true
+motion_scale = Vector2( 0.35, 0.3 )
+motion_offset = Vector2( 0, -40 )
+motion_mirroring = Vector2( 400, 0 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+
+position = Vector2( 28, 27 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+
+position = Vector2( 129, 9 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+
+position = Vector2( 291, 22 )
+texture = ExtResource( 16 )
+vframes = 2
+hframes = 2
+frame = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="cameras" type="Node" parent="."]
+
+[node name="cam" type="Camera2D" parent="cameras"]
+
+position = Vector2( 19, -24 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -300
+limit_top = -10000000
+limit_right = 900
+limit_bottom = 200
+limit_smoothed = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 10.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 17 )
+_sections_unfolded = [ "Limit", "Smoothing" ]
+
+[node name="grecri" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 110, -43 )
+
+[node name="grecri6" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 302, 14 )
+
+[node name="grecri10" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( -132, -370 )
+
+[node name="grecri11" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( -44, -375 )
+
+[node name="grecri8" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( -36, -13 )
+
+[node name="grecri9" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 52, -13 )
+
+[node name="grecri7" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 494, -114 )
+
+[node name="grecri3" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 527, -233 )
+
+[node name="grecri4" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 606, -235 )
+
+[node name="grecri5" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 720, -234 )
+
+[node name="grecri2" parent="." instance=ExtResource( 18 )]
+
+position = Vector2( 697, -115 )
+
+[node name="redcri" parent="." instance=ExtResource( 19 )]
+
+position = Vector2( -200, 20 )
+
+[node name="redcri2" parent="." instance=ExtResource( 19 )]
+
+position = Vector2( 534.626, -109.64 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 20 )]
+
+zone_text = "Zone X"
+location = "Polygone"
+
+

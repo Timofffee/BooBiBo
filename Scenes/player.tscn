@@ -1,0 +1,371 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/player_controller.gd" type="Script" id=1]
+[ext_resource path="res://Art/player_boo.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -4, -5, 4, -5, 6, 0, 4, 4, -4, 4, -6, 0 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "bounce"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("col:shape:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -4, -5, 4, -5, 6, 0, 4, 4, -4, 4, -6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "damage"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("body:modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("particle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("col:shape:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -4, -5, 4, -5, 5, 0, 4, 4, -4, 4, -5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("col:shape:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -4, -5, 4, -5, 6, 0, 4, 4, -4, 4, -6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("col:shape:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -4, -5, 4, -5, 5, 0, 4, 4, -4, 4, -5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("col:shape:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -4, -5, 4, -5, 6, 0, 4, 4, -4, 4, -6, 0 ) ]
+}
+
+[sub_resource type="ParticlesMaterial" id=9]
+
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 90.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 4.0
+scale_random = 1.0
+color = Color( 0, 1, 0.25, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Color", "Initial Velocity", "Scale", "Spread" ]
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4, 1 )
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 0
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+player_id = 1
+
+[node name="body" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+offset = Vector2( 0, -1 )
+vframes = 4
+hframes = 4
+_sections_unfolded = [ "Animation", "Material", "Offset", "Visibility" ]
+
+[node name="bullet_spawn" type="Position2D" parent="body"]
+
+visible = false
+position = Vector2( 7, 0 )
+
+[node name="col" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/bounce = SubResource( 2 )
+anims/damage = SubResource( 3 )
+anims/die = SubResource( 4 )
+anims/falling = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/jumping = SubResource( 7 )
+anims/run = SubResource( 8 )
+next/bounce = "idle"
+next/damage = "idle"
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "idle"
+_sections_unfolded = [ "Playback", "playback" ]
+
+[node name="particle" type="Particles2D" parent="."]
+
+emitting = false
+amount = 64
+lifetime = 1.0
+one_shot = true
+preprocess = 0.0
+speed_scale = 2.0
+explosiveness = 0.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 9 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Process Material", "Time" ]
+
+[node name="floor_kill" type="Area2D" parent="."]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 8
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="col" type="CollisionShape2D" parent="floor_kill"]
+
+position = Vector2( 0, 4 )
+shape = SubResource( 10 )
+
+[node name="check_wall_r" type="RayCast2D" parent="."]
+
+position = Vector2( 5, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 2, 0 )
+collision_layer = 1024
+type_mask = 15
+
+[node name="check_wall_l" type="RayCast2D" parent="."]
+
+position = Vector2( -5, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -2, 0 )
+collision_layer = 1024
+type_mask = 15
+
+[node name="check_platform" type="RayCast2D" parent="."]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 5 )
+collision_layer = 1024
+type_mask = 15
+
+[connection signal="body_entered" from="floor_kill" to="." method="_on_floor_kill_body_entered"]
+
+
