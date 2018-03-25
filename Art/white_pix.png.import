@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/white_pix.png-f9abe43f45979b650e6c6dd341892bc5.stex"
 
+[deps]
+
+source_file="res://Art/white_pix.png"
+source_md5="5df0ac2d51cfecbde35e8dd1ba3a8d77"
+
+dest_files=[ "res://.import/white_pix.png-f9abe43f45979b650e6c6dd341892bc5.stex" ]
+dest_md5="55a9ad7c9f587b0aed6dfb04ca1e7348"
+
 [params]
 
 compress/mode=0

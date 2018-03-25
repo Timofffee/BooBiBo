@@ -4,18 +4,20 @@
 [ext_resource path="res://Art/redcri.png" type="Texture" id=2]
 [ext_resource path="res://Art/expld.png" type="Texture" id=3]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=1]
 
 offsets = PoolRealArray( 0, 0.538012, 0.976608, 1 )
 colors = PoolColorArray( 0.890137, 0.317627, 0, 1, 0.921387, 0.827148, 0.125488, 1, 0.921387, 0.827148, 0.125488, 0, 0.603516, 0.921387, 0, 0 )
 
-[sub_resource type="GradientTexture" id=9]
+[sub_resource type="GradientTexture" id=2]
 
-gradient = SubResource( 5 )
+flags = 4
+gradient = SubResource( 1 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=3]
 
+render_priority = 0
 trail_divisor = 1
 emission_shape = 1
 emission_sphere_radius = 2.0
@@ -43,7 +45,7 @@ angle = 45.0
 angle_random = 0.0
 scale = 5.0
 scale_random = 1.0
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 2 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -53,12 +55,12 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 5, 5 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 
 resource_name = "bounce"
 length = 0.4
@@ -69,6 +71,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -76,7 +79,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=6]
 
 resource_name = "damage"
 length = 0.2
@@ -87,6 +90,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -98,6 +102,7 @@ tracks/1/path = NodePath("body:modulate")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -105,9 +110,8 @@ tracks/1/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=7]
 
-resource_name = "die"
 length = 1.0
 loop = false
 step = 0.1
@@ -116,6 +120,7 @@ tracks/0/path = NodePath("die_part:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -127,6 +132,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0.1, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -139,7 +145,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=8]
 
 resource_name = "falling"
 length = 0.2
@@ -150,6 +156,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -157,7 +164,7 @@ tracks/0/keys = {
 "values": [ 8, 9 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 
 length = 0.4
 loop = true
@@ -167,6 +174,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -174,7 +182,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=10]
 
 resource_name = "jumping"
 length = 0.1
@@ -185,6 +193,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -192,7 +201,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=11]
 
 length = 0.4
 loop = true
@@ -202,6 +211,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -209,8 +219,9 @@ tracks/0/keys = {
 "values": [ 0, 4, 5, 6 ]
 }
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=12]
 
+render_priority = 0
 trail_divisor = 1
 emission_shape = 1
 emission_sphere_radius = 5.0
@@ -238,7 +249,7 @@ angle = 45.0
 angle_random = 0.0
 scale = 5.0
 scale_random = 1.0
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 2 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -248,9 +259,8 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=13]
 
-resource_name = "poof"
 length = 0.3
 loop = false
 step = 0.05
@@ -259,6 +269,7 @@ tracks/0/path = NodePath("poof:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.15, 0.2, 0.25, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -270,6 +281,7 @@ tracks/1/path = NodePath("poof:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -281,6 +293,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0.25 ),
 "transitions": PoolRealArray( 1 ),
@@ -290,12 +303,12 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7, 5 )
 
-[node name="redcri" type="KinematicBody2D" groups=[
+[node name="redcri" type="KinematicBody2D" index="0" groups=[
 "emeny",
 ]]
 
@@ -306,67 +319,61 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "collision" ]
 
-[node name="check_floor_r" type="RayCast2D" parent="."]
+[node name="check_floor_r" type="RayCast2D" parent="." index="0"]
 
 visible = false
 position = Vector2( 8, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 128 )
-collision_layer = 1032
-type_mask = 15
+collision_mask = 1
 
-[node name="check_floor_l" type="RayCast2D" parent="."]
+[node name="check_floor_l" type="RayCast2D" parent="." index="1"]
 
 visible = false
 position = Vector2( -8, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 128 )
-collision_layer = 1032
-type_mask = 15
+collision_mask = 1
 
-[node name="check_wall_l" type="RayCast2D" parent="."]
+[node name="check_wall_l" type="RayCast2D" parent="." index="2"]
 
 visible = false
 position = Vector2( -5, 1 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( -4, 0 )
-collision_layer = 1032
-type_mask = 1
+collision_mask = 1024
 
-[node name="check_wall_r" type="RayCast2D" parent="."]
+[node name="check_wall_r" type="RayCast2D" parent="." index="3"]
 
 visible = false
 position = Vector2( 5, 1 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 4, 0 )
-collision_layer = 1032
-type_mask = 1
+collision_mask = 1024
 
-[node name="check_jump_l" type="RayCast2D" parent="."]
+[node name="check_jump_l" type="RayCast2D" parent="." index="4"]
 
 visible = false
 position = Vector2( -4, -26 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( -6, 0 )
-collision_layer = 1032
-type_mask = 1
+collision_mask = 1024
 
-[node name="check_jump_r" type="RayCast2D" parent="."]
+[node name="check_jump_r" type="RayCast2D" parent="." index="5"]
 
 visible = false
 position = Vector2( 4, -26 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 6, 0 )
-collision_layer = 1032
-type_mask = 1
+collision_mask = 1024
 
-[node name="part" type="Particles2D" parent="."]
+[node name="part" type="Particles2D" parent="." index="6"]
 
 position = Vector2( 0, 2 )
 emitting = true
@@ -382,14 +389,14 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 0
-process_material = SubResource( 11 )
+process_material = SubResource( 3 )
 texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 
-[node name="body" type="Sprite" parent="."]
+[node name="body" type="Sprite" parent="." index="7"]
 
 texture = ExtResource( 2 )
 vframes = 4
@@ -397,41 +404,40 @@ hframes = 4
 frame = 1
 _sections_unfolded = [ "Animation", "Region", "Visibility" ]
 
-[node name="col" type="CollisionShape2D" parent="."]
+[node name="col" type="CollisionShape2D" parent="." index="8"]
 
 position = Vector2( 0, 3 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="." index="9"]
 
+root_node = NodePath("..")
+autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/bounce = SubResource( 12 )
-anims/damage = SubResource( 13 )
-anims/die = SubResource( 2 )
-anims/falling = SubResource( 14 )
-anims/idle = SubResource( 3 )
-anims/jumping = SubResource( 15 )
-anims/run = SubResource( 4 )
+playback_speed = 1.0
+anims/bounce = SubResource( 5 )
+anims/damage = SubResource( 6 )
+anims/die = SubResource( 7 )
+anims/falling = SubResource( 8 )
+anims/idle = SubResource( 9 )
+anims/jumping = SubResource( 10 )
+anims/run = SubResource( 11 )
 next/bounce = "idle"
 next/damage = "idle"
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
-autoplay = "idle"
 
-[node name="update_target_dir" type="Timer" parent="."]
+[node name="update_target_dir" type="Timer" parent="." index="10"]
 
 process_mode = 1
 wait_time = 0.3
 one_shot = false
 autostart = true
 
-[node name="die_part" type="Particles2D" parent="."]
+[node name="die_part" type="Particles2D" parent="." index="11"]
 
 position = Vector2( 0, 2 )
-emitting = true
+emitting = false
 amount = 16
 lifetime = 0.5
 one_shot = true
@@ -444,19 +450,19 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 10 )
+process_material = SubResource( 12 )
 texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Process Material", "Time" ]
 
-[node name="visib" type="VisibilityNotifier2D" parent="."]
+[node name="visib" type="VisibilityNotifier2D" parent="." index="12"]
 
 scale = Vector2( 0.1, 0.1 )
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="poof" type="Sprite" parent="."]
+[node name="poof" type="Sprite" parent="." index="13"]
 
 visible = false
 texture = ExtResource( 3 )
@@ -465,25 +471,24 @@ hframes = 4
 frame = 5
 _sections_unfolded = [ "Animation", "Material", "Visibility" ]
 
-[node name="effects" type="AnimationPlayer" parent="."]
+[node name="effects" type="AnimationPlayer" parent="." index="14"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/poof = SubResource( 8 )
-playback/active = true
-playback/speed = 1.0
+playback_speed = 1.0
+anims/poof = SubResource( 13 )
 blend_times = [  ]
-autoplay = ""
 
-[node name="shower" type="Timer" parent="."]
+[node name="shower" type="Timer" parent="." index="15"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="kill_zone" type="Area2D" parent="."]
+[node name="kill_zone" type="Area2D" parent="." index="16"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -493,10 +498,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="col" type="CollisionShape2D" parent="kill_zone"]
+[node name="col" type="CollisionShape2D" parent="kill_zone" index="0"]
 
 position = Vector2( 0, 4 )
-shape = SubResource( 16 )
+shape = SubResource( 14 )
 
 [connection signal="timeout" from="update_target_dir" to="." method="_update_dir"]
 

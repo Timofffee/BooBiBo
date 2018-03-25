@@ -12,22 +12,22 @@ var linear_vel = Vector2()
 var onair_time = 0 #
 var on_floor = false
 
-var anim=""
+var anim=''
 
 var dir = 0
 var health = 3
 var damage = false
 var on_screen = true
 
-onready var sprite = $body
-onready var ray_r = $check_floor_r
-onready var ray_l = $check_floor_l
-onready var check_wall_l = $check_wall_l
-onready var check_wall_r = $check_wall_r
-onready var check_jump_l = $check_jump_l
-onready var check_jump_r = $check_jump_r
+onready var sprite = $'body'
+onready var ray_r = $'check_floor_r'
+onready var ray_l = $'check_floor_l'
+onready var check_wall_l = $'check_wall_l'
+onready var check_wall_r = $'check_wall_r'
+onready var check_jump_l = $'check_jump_l'
+onready var check_jump_r = $'check_jump_r'
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	#increment counters
 
 	onair_time+=delta
@@ -70,53 +70,53 @@ func _fixed_process(delta):
 
 	### ANIMATION ###
 
-	var new_anim="idle"
+	var new_anim='idle'
 
 	if on_floor:
-		if anim == "falling":
-				new_anim = "bounce"
+		if anim == 'falling':
+				new_anim = 'bounce'
 		else:
 			if (linear_vel.x < -SIDING_CHANGE_SPEED):
 				sprite.scale.x = -1
-				new_anim="run"
+				new_anim='run'
 	
 			if (linear_vel.x > SIDING_CHANGE_SPEED):
 				sprite.scale.x = 1
-				new_anim="run"
+				new_anim='run'
 	else:
 		if (linear_vel.y < 0 ):
-				new_anim="jumping"
+				new_anim='jumping'
 		else:
-			new_anim="falling"
+			new_anim='falling'
 	
 	if (new_anim!=anim):
-		if $anim.get_current_animation() in ["bounce", "damage"]:
+		if $'anim'.get_current_animation() in ['bounce', 'damage']:
 			pass
 		else:
 			anim=new_anim
-			get_node("anim").play(anim)
+			$'anim'.play(anim)
 
 func die():
 	$'kill_zone/col'.disabled = true
-	$part.emitting = false
-	$anim.play("die")
-	set_fixed_process(false)
+	$'part'.emitting = false
+	$'anim'.play('die')
+	set_physics_process(false)
 
 func die_clear():
 	
-	$update_target_dir.queue_free()
-	$col.queue_free()
-	$body.queue_free()
+	$'update_target_dir'.queue_free()
+	$'col'.queue_free()
+	$'body'.queue_free()
 
 func damage(val):
 	health -= val
 	damage = true
-	$anim.play("damage")
+	$'anim'.play('damage')
 	if health <= 0:
 		die()
 
 func _update_dir ():
-	var players = get_tree().get_nodes_in_group("player")
+	var players = get_tree().get_nodes_in_group('player')
 	var player_pos = Vector2()
 	var dist_p = 9999
 	for p in players:
@@ -144,25 +144,26 @@ func _ready():
 
 func _on_shower_timeout():
 	if on_screen:
-		if has_node("update_target_dir"):
-			$update_target_dir.stop()
+		if has_node('update_target_dir'):
+			$'update_target_dir'.stop()
 		if has_node("body"):
-			$body.visible = false
+			$'body'.visible = false
 		if has_node("col"):
-			$col.disabled = true
-		$anim.stop()
-		$part.emitting = false
-		set_fixed_process(false)
+			$'col'.disabled = true
+		$'anim'.stop()
+		$'part'.emitting = false
+		set_physics_process(false)
 		$'kill_zone/col'.disabled = true
 	elif not on_screen:
-		$update_target_dir.start()
-		$body.visible = true
-		$col.disabled = false
-		$effects.play("poof")
-		$anim.play("idle")
-		$part.emitting = true
+		$'update_target_dir'.start()
+		$'body'.visible = true
+		$'col'.disabled = false
+		$'effects'.play('poof')
+		$'anim'.play('idle')
+		$'part'.emitting = true
+		set_physics_process(true)
 		$'kill_zone/col'.disabled = false
 
 func _on_kill_zone_body_entered( body ):
-	if body.has_method("damage"):
+	if body.has_method('damage'):
 		body.damage(1, self)

@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/bg_water3.png-0d5d5108debe66e8c0497a2fcbfa6da7.stex"
 
+[deps]
+
+source_file="res://Art/bg_water/bg_water3.png"
+source_md5="6e0fe353a8547e627dee10f52f351345"
+
+dest_files=[ "res://.import/bg_water3.png-0d5d5108debe66e8c0497a2fcbfa6da7.stex" ]
+dest_md5="d8b68a34cabf4f9d7797e19463e80241"
+
 [params]
 
 compress/mode=0

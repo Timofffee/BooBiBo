@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/player_boo.png-94b21c20c038fca43c065017b121f706.stex"
 
+[deps]
+
+source_file="res://Art/player_boo.png"
+source_md5="8636026f13a7b03a8116966042de626a"
+
+dest_files=[ "res://.import/player_boo.png-94b21c20c038fca43c065017b121f706.stex" ]
+dest_md5="edb1c1223af7fbd0cd176d3d50b64cdb"
+
 [params]
 
 compress/mode=0

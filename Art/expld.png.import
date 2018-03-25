@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/expld.png-7f64de3866a671c536fb48d6ece58939.stex"
 
+[deps]
+
+source_file="res://Art/expld.png"
+source_md5="e4351a3fb30a074d91477616b178affb"
+
+dest_files=[ "res://.import/expld.png-7f64de3866a671c536fb48d6ece58939.stex" ]
+dest_md5="be500339dd9353e816992ef62382e11c"
+
 [params]
 
 compress/mode=0

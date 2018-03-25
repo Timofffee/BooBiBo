@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/KB_X.png-e2a50a8ef9126521c8e9c65c59ce653e.stex"
 
+[deps]
+
+source_file="res://Art/buttons/keyboard/KB_X.png"
+source_md5="b7d2cece12e4e4165dbc9a4ec63d35c1"
+
+dest_files=[ "res://.import/KB_X.png-e2a50a8ef9126521c8e9c65c59ce653e.stex" ]
+dest_md5="a3aa425c7662a2de2605201cbef70d62"
+
 [params]
 
 compress/mode=0

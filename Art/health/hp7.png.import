@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/hp7.png-91ecf3b68d9f044879263b3546e86c64.stex"
 
+[deps]
+
+source_file="res://Art/health/hp7.png"
+source_md5="1e94eb34d1f1c3c486a9f97772fd5d22"
+
+dest_files=[ "res://.import/hp7.png-91ecf3b68d9f044879263b3546e86c64.stex" ]
+dest_md5="efb9819fe2cf4b08c712c7dfd9014b23"
+
 [params]
 
 compress/mode=0

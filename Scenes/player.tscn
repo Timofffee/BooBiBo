@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Art/player_boo.png" type="Texture" id=2]
@@ -19,6 +19,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -30,6 +31,7 @@ tracks/1/path = NodePath("col:shape:points")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -48,6 +50,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -59,6 +62,7 @@ tracks/1/path = NodePath("body:modulate")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -76,6 +80,7 @@ tracks/0/path = NodePath("particle:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -87,6 +92,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
@@ -106,6 +112,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -117,6 +124,7 @@ tracks/1/path = NodePath("col:shape:points")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -134,6 +142,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -145,6 +154,7 @@ tracks/1/path = NodePath("col:shape:points")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -162,6 +172,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -173,6 +184,7 @@ tracks/1/path = NodePath("col:shape:points")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -190,6 +202,7 @@ tracks/0/path = NodePath("body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -201,6 +214,7 @@ tracks/1/path = NodePath("col:shape:points")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -208,8 +222,28 @@ tracks/1/keys = {
 "values": [ PoolVector2Array( -4, -5, 4, -5, 6, 0, 4, 4, -4, 4, -6, 0 ) ]
 }
 
+[sub_resource type="Animation" id=11]
+
+resource_name = "slide"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 9, 10 ]
+}
+
 [sub_resource type="ParticlesMaterial" id=9]
 
+render_priority = 0
 trail_divisor = 1
 emission_shape = 0
 flag_align_y = false
@@ -251,7 +285,7 @@ _sections_unfolded = [ "Color", "Initial Velocity", "Scale", "Spread" ]
 custom_solver_bias = 0.0
 extents = Vector2( 4, 1 )
 
-[node name="player" type="KinematicBody2D" groups=[
+[node name="player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
 
@@ -263,28 +297,31 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 player_id = 1
 
-[node name="body" type="Sprite" parent="."]
+[node name="body" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 offset = Vector2( 0, -1 )
 vframes = 4
 hframes = 4
+frame = 10
 _sections_unfolded = [ "Animation", "Material", "Offset", "Visibility" ]
 
-[node name="bullet_spawn" type="Position2D" parent="body"]
+[node name="bullet_spawn" type="Position2D" parent="body" index="0"]
 
 visible = false
 position = Vector2( 7, 0 )
 
-[node name="col" type="CollisionShape2D" parent="."]
+[node name="col" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
 
+root_node = NodePath("..")
+autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/bounce = SubResource( 2 )
 anims/damage = SubResource( 3 )
 anims/die = SubResource( 4 )
@@ -292,15 +329,13 @@ anims/falling = SubResource( 5 )
 anims/idle = SubResource( 6 )
 anims/jumping = SubResource( 7 )
 anims/run = SubResource( 8 )
+anims/slide = SubResource( 11 )
 next/bounce = "idle"
 next/damage = "idle"
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
-autoplay = "idle"
 _sections_unfolded = [ "Playback", "playback" ]
 
-[node name="particle" type="Particles2D" parent="."]
+[node name="particle" type="Particles2D" parent="." index="3"]
 
 emitting = false
 amount = 64
@@ -322,7 +357,7 @@ h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Process Material", "Time" ]
 
-[node name="floor_kill" type="Area2D" parent="."]
+[node name="floor_kill" type="Area2D" parent="." index="4"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -335,36 +370,36 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
 
-[node name="col" type="CollisionShape2D" parent="floor_kill"]
+[node name="col" type="CollisionShape2D" parent="floor_kill" index="0"]
 
 position = Vector2( 0, 4 )
 shape = SubResource( 10 )
 
-[node name="check_wall_r" type="RayCast2D" parent="."]
+[node name="check_wall_r" type="RayCast2D" parent="." index="5"]
 
+visible = false
 position = Vector2( 5, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 2, 0 )
-collision_layer = 1024
-type_mask = 15
+collision_mask = 1
 
-[node name="check_wall_l" type="RayCast2D" parent="."]
+[node name="check_wall_l" type="RayCast2D" parent="." index="6"]
 
+visible = false
 position = Vector2( -5, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( -2, 0 )
-collision_layer = 1024
-type_mask = 15
+collision_mask = 1
 
-[node name="check_platform" type="RayCast2D" parent="."]
+[node name="check_platform" type="RayCast2D" parent="." index="7"]
 
+visible = false
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
-collision_layer = 1024
-type_mask = 15
+collision_mask = 1
 
 [connection signal="body_entered" from="floor_kill" to="." method="_on_floor_kill_body_entered"]
 

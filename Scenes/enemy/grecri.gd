@@ -11,19 +11,19 @@ var linear_vel = Vector2()
 var onair_time = 0 #
 var on_floor = false
 
-var anim=""
+var anim=''
 
 var dir = 0
 
 var on_screen = true
 
-onready var sprite = $body
-onready var ray_r = $check_floor_r
-onready var ray_l = $check_floor_l
-onready var check_wall_l = $check_wall_l
-onready var check_wall_r = $check_wall_r
+onready var sprite = $'body'
+onready var ray_r = $'check_floor_r'
+onready var ray_l = $'check_floor_l'
+onready var check_wall_l = $'check_wall_l'
+onready var check_wall_r = $'check_wall_r'
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	#increment counters
 
 	onair_time+=delta
@@ -52,37 +52,37 @@ func _fixed_process(delta):
 
 	### ANIMATION ###
 
-	var new_anim="idle"
+	var new_anim='idle'
 
 	if (on_floor):
 		
 		if (linear_vel.x < -SIDING_CHANGE_SPEED):
 			sprite.scale.x = -1
-			new_anim="run"
+			new_anim='run'
 
 		if (linear_vel.x > SIDING_CHANGE_SPEED):
 			sprite.scale.x = 1
-			new_anim="run"
+			new_anim='run'
 
 	if (new_anim!=anim):
 		anim=new_anim
-		get_node("anim").play(anim)
+		$'anim'.play(anim)
 
 func die():
-	$anim.play("die")
-	set_fixed_process(false)
+	$'anim'.play('die')
+	set_physics_process(false)
 
 func die_clear():
 	$'kill_zone/col'.disabled = true
-	$update_target_dir.queue_free()
-	$col.queue_free()
-	$body.queue_free()
+	$'update_target_dir'.queue_free()
+	$'col'.queue_free()
+	$'body'.queue_free()
 
 func damage(val):
 	die()
 
 func _update_dir ():
-	var players = get_tree().get_nodes_in_group("player")
+	var players = get_tree().get_nodes_in_group('player')
 	var player_pos = Vector2()
 	var dist_p = 9999
 	for p in players:
@@ -111,20 +111,21 @@ func _ready():
 func _on_shower_timeout():
 	if on_screen:
 		if has_node("update_target_dir"):
-			$update_target_dir.stop()
+			$'update_target_dir'.stop()
 		if has_node("body"):
-			$body.visible = false
+			$'body'.visible = false
 		if has_node("col"):
-			$col.disabled = true
-		$anim.stop()
-		set_fixed_process(false)
+			$'col'.disabled = true
+		$'anim'.stop()
+		set_physics_process(false)
 		$'kill_zone/col'.disabled = true
 	elif not on_screen:
-		$update_target_dir.start()
-		$body.visible = true
-		$col.disabled = false
-		$effects.play("poof")
-		$anim.play("idle")
+		$'update_target_dir'.start()
+		$'body'.visible = true
+		$'col'.disabled = false
+		$'effects'.play("poof")
+		$'anim'.play("idle")
+		set_physics_process(true)
 		$'kill_zone/col'.disabled = false
 
 

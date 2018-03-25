@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/map.png-0ad055f78e25db2ac3f855c65510d3eb.stex"
 
+[deps]
+
+source_file="res://Art/map.png"
+source_md5="a018298f61e04c492f6a2cf8bf15ea58"
+
+dest_files=[ "res://.import/map.png-0ad055f78e25db2ac3f855c65510d3eb.stex" ]
+dest_md5="55ef7a3aee0ede3fdd09249dc600df1f"
+
 [params]
 
 compress/mode=0

@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/GB_LT.png-0c342451ed379a4ac348787347705b50.stex"
 
+[deps]
+
+source_file="res://Art/buttons/gamepad/GB_LT.png"
+source_md5="047b3b1ba6d401fbdbfd937bc53a3b70"
+
+dest_files=[ "res://.import/GB_LT.png-0c342451ed379a4ac348787347705b50.stex" ]
+dest_md5="5a8eba8e303921f7df26aa89c743b7bd"
+
 [params]
 
 compress/mode=0

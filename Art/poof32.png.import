@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/poof32.png-6ab36fc4b60f753936e16760e6fbe812.stex"
 
+[deps]
+
+source_file="res://Art/poof32.png"
+source_md5="67ab3d277098bf77863c39443daf7cee"
+
+dest_files=[ "res://.import/poof32.png-6ab36fc4b60f753936e16760e6fbe812.stex" ]
+dest_md5="b6dcfb2b4c4c3d040fed6f28fa1d7315"
+
 [params]
 
 compress/mode=0

@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/redcri.png-0491c55f8b4582761874872ad3778274.stex"
 
+[deps]
+
+source_file="res://Art/redcri.png"
+source_md5="18f07034d6d9ad74cfdaa6fdf9554e5c"
+
+dest_files=[ "res://.import/redcri.png-0491c55f8b4582761874872ad3778274.stex" ]
+dest_md5="44726318296ad6ffca93643c5f9a5caf"
+
 [params]
 
 compress/mode=0

@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/bg_bg.png-d4e6a234368bc61ea7fd10f4ce9b61e2.stex"
 
+[deps]
+
+source_file="res://Art/bg_bg.png"
+source_md5="6f4ae9c04894657ae98133e0eb35a736"
+
+dest_files=[ "res://.import/bg_bg.png-d4e6a234368bc61ea7fd10f4ce9b61e2.stex" ]
+dest_md5="7df2f5a55aa30fac5b763e64870a23ce"
+
 [params]
 
 compress/mode=0

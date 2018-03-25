@@ -4,6 +4,14 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/GB_RIGHT.png-2a4a19065e25d147d5f6dd9f1cf1dcba.stex"
 
+[deps]
+
+source_file="res://Art/buttons/gamepad/GB_RIGHT.png"
+source_md5="ed3571102c468ffccfe3fcce34f0178e"
+
+dest_files=[ "res://.import/GB_RIGHT.png-2a4a19065e25d147d5f6dd9f1cf1dcba.stex" ]
+dest_md5="edbb7be61aef9ef704a2d08765be572c"
+
 [params]
 
 compress/mode=0
