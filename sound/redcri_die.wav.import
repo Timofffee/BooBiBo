@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/redcri_die.wav-454d95f5f27659efc4d705ed948ce9c9.sample"
+
+[deps]
+
+source_file="res://sound/redcri_die.wav"
+source_md5="09b60bb14b9bfa735aa5ec2b81e8bda5"
+
+dest_files=[ "res://.import/redcri_die.wav-454d95f5f27659efc4d705ed948ce9c9.sample" ]
+dest_md5="4e2494c3c93b7ab458b2af521d2bbb86"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

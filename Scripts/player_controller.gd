@@ -43,6 +43,8 @@ export(int, 1,2) var player_id = 1
 
 var audio_jump = preload('res://sound/jump.ogg')
 var audio_landing = preload('res://sound/landing.ogg')
+var audio_damage = preload('res://sound/player_damage.wav')
+var audio_shoot = preload('res://sound/player_shoot.wav')
 
 
 #cache the sprite here for fast access (we will set scale to flip it often)
@@ -85,7 +87,7 @@ func _physics_process(delta):
 	if (is_on_floor()):
 		onair_time = 0
 	
-	if on_floor == false and onair_time < MIN_ONAIR_TIME:
+	if on_floor == false and is_on_floor():
 		play_audio(audio_landing)
 	on_floor = onair_time < MIN_ONAIR_TIME
 
@@ -157,6 +159,7 @@ func _physics_process(delta):
 			target_speed = Vector2(position.x - enemy.position.x, 0).normalized().x * 10
 		damage = false
 		linear_vel.y=-JUMP_SPEED/2
+		play_audio(audio_damage)
 	
 	if afterair_time > MAX_AFTERAIR_TIME:
 		air_speed = 0
@@ -185,8 +188,8 @@ func _physics_process(delta):
 		bullet.dir = ($'body/bullet_spawn'.global_position - $'body'.global_position ).normalized()
 		bullet.add_collision_exception_with(self) # don't want player to collide with bullet
 		get_parent().add_child( bullet ) #don't want bullet to move with me, so add it as child of parent
-#		get_node("sound_shoot").play()
 		shoot_time=0
+		play_audio(audio_shoot)
 
 
 	### ANIMATION ###

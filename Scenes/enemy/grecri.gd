@@ -22,6 +22,10 @@ onready var ray_r = $'check_floor_r'
 onready var ray_l = $'check_floor_l'
 onready var check_wall_l = $'check_wall_l'
 onready var check_wall_r = $'check_wall_r'
+onready var audio = $'audio'
+
+var audio_die = preload('res://sound/greencri_die.wav')
+var audio_show = preload('res://sound/greencri_show.wav')
 
 func _physics_process(delta):
 	#increment counters
@@ -70,6 +74,7 @@ func _physics_process(delta):
 
 func die():
 	$'anim'.play('die')
+	play_audio(audio_die)
 	set_physics_process(false)
 
 func die_clear():
@@ -121,7 +126,7 @@ func _on_shower_timeout():
 		$'anim'.stop()
 		set_physics_process(false)
 		$'kill_zone/col'.disabled = true
-	elif not on_screen:
+	elif not on_screen and $'body'.visible == false:
 		$'update_target_dir'.start()
 		$'body'.visible = true
 		$'col'.disabled = false
@@ -129,8 +134,16 @@ func _on_shower_timeout():
 		$'anim'.play("idle")
 		set_physics_process(true)
 		$'kill_zone/col'.disabled = false
+		play_audio(audio_show)
 
 
 func _on_kill_zone_body_entered( body ):
 	if body.has_method("damage"):
 		body.damage(1, self)
+
+func play_audio(sample):
+	if sample is AudioStreamOGGVorbis or sample is AudioStreamSample or sample is AudioStreamRandomPitch:
+		if audio.stream.audio_stream != sample:
+			audio.stream.audio_stream = sample
+		audio.play()
+

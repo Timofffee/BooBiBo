@@ -3,15 +3,15 @@
 [ext_resource path="res://Scenes/enemy/thorns_ground_static.gd" type="Script" id=1]
 [ext_resource path="res://Art/thorns2.png" type="Texture" id=2]
 
-[node name="thorns_ground_static" type="Area2D"]
+[node name="thorns_ground_static" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 1027
-collision_mask = 1027
+collision_layer = 32
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )

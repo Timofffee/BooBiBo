@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zoneX.ogg-b93d7dcdd504767cd42cfb75f7a5ccad.oggstr"
+
+[deps]
+
+source_file="res://sound/flp/zoneX.ogg"
+source_md5="fd58147a57e4d9cc735ed893d3df4a13"
+
+dest_files=[ "res://.import/zoneX.ogg-b93d7dcdd504767cd42cfb75f7a5ccad.oggstr" ]
+dest_md5="538c63655a4990fd0b2d7942e9c6e517"
+
+[params]
+
+loop=true
+loop_offset=0

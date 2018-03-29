@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/enemy/grecri.gd" type="Script" id=1]
 [ext_resource path="res://Art/grecri.png" type="Texture" id=2]
 [ext_resource path="res://Art/poof32.png" type="Texture" id=3]
+[ext_resource path="res://sound/greencri_die.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -182,6 +183,11 @@ tracks/2/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 6, 5 )
 
+[sub_resource type="AudioStreamRandomPitch" id=10]
+
+audio_stream = ExtResource( 4 )
+random_pitch = 1.1
+
 [node name="grecri" type="KinematicBody2D" groups=[
 "emeny",
 ]]
@@ -327,6 +333,16 @@ audio_bus_name = "Master"
 
 position = Vector2( 0, 4 )
 shape = SubResource( 9 )
+
+[node name="audio" type="AudioStreamPlayer2D" parent="." index="14"]
+
+stream = SubResource( 10 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="timeout" from="update_target_dir" to="." method="_update_dir"]
 

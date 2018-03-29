@@ -131,12 +131,12 @@ func _update_dir ():
 
 func _on_visib_screen_entered():
 	if on_screen:
-		$shower.start()
+		$'shower'.start()
 		on_screen = false
 
 func _on_visib_screen_exited():
 	if not on_screen:
-		$shower.start()
+		$'shower'.start()
 		on_screen = true
 
 func _ready():
@@ -154,7 +154,7 @@ func _on_shower_timeout():
 		$'part'.emitting = false
 		set_physics_process(false)
 		$'kill_zone/col'.disabled = true
-	elif not on_screen:
+	elif not on_screen and $'body'.visible == false:
 		$'update_target_dir'.start()
 		$'body'.visible = true
 		$'col'.disabled = false

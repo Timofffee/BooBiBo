@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/unknow9.wav-85a8bb8ba3eb287da7c4d509a18e6106.sample"
+
+[deps]
+
+source_file="res://sound/unknow9.wav"
+source_md5="89f6ac019ae8454b4688ba0cbbc9366b"
+
+dest_files=[ "res://.import/unknow9.wav-85a8bb8ba3eb287da7c4d509a18e6106.sample" ]
+dest_md5="1dfd4c21301f66ea6074a90c9ece8faa"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

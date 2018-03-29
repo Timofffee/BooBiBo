@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/enemy/thorns.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/enemy/thorns_ground.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Scenes/enemy/redcri.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=24]
+[ext_resource path="res://sound/flp/zoneX.ogg" type="AudioStream" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -57,7 +58,7 @@ custom_solver_bias = 0.0
 a = Vector2( 20, -838 )
 b = Vector2( 20, 658 )
 
-[node name="polygone" type="Node"]
+[node name="polygone" type="Node" index="0"]
 
 [node name="thorns" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -73,25 +74,64 @@ timestart = 2.0
 position = Vector2( 225, -445 )
 rotation = 1.5708
 
-[node name="thorns_ground_static" parent="." index="3" instance=ExtResource( 2 )]
+[node name="thorns4" parent="." index="3" instance=ExtResource( 1 )]
+
+position = Vector2( -161, -86 )
+rotation = 4.71239
+
+[node name="thorns5" parent="." index="4" instance=ExtResource( 1 )]
+
+position = Vector2( -161, -75 )
+rotation = 4.71239
+timestart = 0.5
+
+[node name="thorns_ground_static" parent="." index="5" instance=ExtResource( 2 )]
 
 position = Vector2( 332, -480 )
 timestart = 1.1
 
-[node name="thorns_ground_static2" parent="." index="4" instance=ExtResource( 2 )]
+[node name="thorns_ground_static5" parent="." index="6" instance=ExtResource( 2 )]
+
+position = Vector2( 136, 32 )
+timestart = 1.1
+
+[node name="thorns_ground_static6" parent="." index="7" instance=ExtResource( 2 )]
+
+position = Vector2( 144, 32 )
+timestart = 0.9
+
+[node name="thorns_ground_static7" parent="." index="8" instance=ExtResource( 2 )]
+
+position = Vector2( 152, 32 )
+timestart = 0.7
+
+[node name="thorns_ground_static9" parent="." index="9" instance=ExtResource( 2 )]
+
+position = Vector2( 352, -150 )
+rotation = 1.5708
+timestart = 0.9
+
+[node name="thorns_ground_static8" parent="." index="10" instance=ExtResource( 2 )]
+
+position = Vector2( 352, -138 )
+rotation = 1.5708
+_sections_unfolded = [ "Collision", "Transform" ]
+timestart = 0.7
+
+[node name="thorns_ground_static2" parent="." index="11" instance=ExtResource( 2 )]
 
 position = Vector2( 342, -480 )
 timestart = 1.0
 
-[node name="thorns_ground_static3" parent="." index="5" instance=ExtResource( 3 )]
+[node name="thorns_ground_static3" parent="." index="12" instance=ExtResource( 3 )]
 
 position = Vector2( 250, -480 )
 
-[node name="thorns_ground_static4" parent="." index="6" instance=ExtResource( 3 )]
+[node name="thorns_ground_static4" parent="." index="13" instance=ExtResource( 3 )]
 
 position = Vector2( 236, -480 )
 
-[node name="TileMap" type="TileMap" parent="." index="7"]
+[node name="TileMap" type="TileMap" parent="." index="14"]
 
 editor/display_folded = true
 mode = 0
@@ -356,12 +396,12 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="player" parent="." index="8" instance=ExtResource( 14 )]
+[node name="player" parent="." index="15" instance=ExtResource( 14 )]
 
-position = Vector2( 609, -493 )
+position = Vector2( 621, -1369 )
 collision_mask = 3
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="9"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="16"]
 
 layer = -1
 offset = Vector2( 0, 0 )
@@ -546,7 +586,7 @@ hframes = 2
 frame = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="cameras" type="Node" parent="." index="10"]
+[node name="cameras" type="Node" parent="." index="17"]
 
 [node name="cam" type="Camera2D" parent="cameras" index="0"]
 
@@ -576,59 +616,59 @@ editor_draw_drag_margin = false
 script = ExtResource( 20 )
 _sections_unfolded = [ "Editor", "Limit", "Smoothing" ]
 
-[node name="grecri" parent="." index="11" instance=ExtResource( 21 )]
+[node name="grecri" parent="." index="18" instance=ExtResource( 21 )]
 
 position = Vector2( 110, -43 )
 
-[node name="grecri6" parent="." index="12" instance=ExtResource( 21 )]
+[node name="grecri6" parent="." index="19" instance=ExtResource( 21 )]
 
-position = Vector2( 302, 14 )
+position = Vector2( 298, 22 )
 
-[node name="grecri10" parent="." index="13" instance=ExtResource( 21 )]
+[node name="grecri10" parent="." index="20" instance=ExtResource( 21 )]
 
-position = Vector2( -132, -370 )
+position = Vector2( -132, -363 )
 
-[node name="grecri11" parent="." index="14" instance=ExtResource( 21 )]
+[node name="grecri11" parent="." index="21" instance=ExtResource( 21 )]
 
-position = Vector2( -44, -375 )
+position = Vector2( -44, -363 )
 
-[node name="grecri8" parent="." index="15" instance=ExtResource( 21 )]
+[node name="grecri8" parent="." index="22" instance=ExtResource( 21 )]
 
 position = Vector2( -36, -13 )
 
-[node name="grecri9" parent="." index="16" instance=ExtResource( 21 )]
+[node name="grecri9" parent="." index="23" instance=ExtResource( 21 )]
 
 position = Vector2( 52, -13 )
 
-[node name="grecri7" parent="." index="17" instance=ExtResource( 21 )]
+[node name="grecri7" parent="." index="24" instance=ExtResource( 21 )]
 
 position = Vector2( 494, -114 )
 
-[node name="grecri3" parent="." index="18" instance=ExtResource( 21 )]
+[node name="grecri3" parent="." index="25" instance=ExtResource( 21 )]
 
 position = Vector2( 527, -233 )
 
-[node name="grecri4" parent="." index="19" instance=ExtResource( 21 )]
+[node name="grecri4" parent="." index="26" instance=ExtResource( 21 )]
 
 position = Vector2( 606, -235 )
 
-[node name="grecri5" parent="." index="20" instance=ExtResource( 21 )]
+[node name="grecri5" parent="." index="27" instance=ExtResource( 21 )]
 
 position = Vector2( 720, -234 )
 
-[node name="grecri2" parent="." index="21" instance=ExtResource( 21 )]
+[node name="grecri2" parent="." index="28" instance=ExtResource( 21 )]
 
 position = Vector2( 697, -115 )
 
-[node name="redcri" parent="." index="22" instance=ExtResource( 22 )]
+[node name="redcri" parent="." index="29" instance=ExtResource( 22 )]
 
 position = Vector2( -200, 20 )
 
-[node name="redcri2" parent="." index="23" instance=ExtResource( 22 )]
+[node name="redcri2" parent="." index="30" instance=ExtResource( 22 )]
 
 position = Vector2( 534.626, -109.64 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="24"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="31"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -641,7 +681,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 zone_text = "Zone X"
 location = "Polygone"
 
-[node name="locker_scene" type="StaticBody2D" parent="." index="25"]
+[node name="locker_scene" type="StaticBody2D" parent="." index="32"]
 
 position = Vector2( 509, -527 )
 input_pickable = false
@@ -663,16 +703,77 @@ shape = SubResource( 3 )
 position = Vector2( 371, 68 )
 shape = SubResource( 3 )
 
-[node name="coin" parent="." index="26" instance=ExtResource( 24 )]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="locker_scene" index="2"]
+
+position = Vector2( 142, -603 )
+shape = SubResource( 3 )
+
+[node name="coin" parent="." index="33" instance=ExtResource( 24 )]
 
 position = Vector2( 150, -168 )
 
-[node name="coin2" parent="." index="27" instance=ExtResource( 24 )]
+[node name="coin2" parent="." index="34" instance=ExtResource( 24 )]
 
 position = Vector2( 135, -168 )
 
-[node name="coin3" parent="." index="28" instance=ExtResource( 24 )]
+[node name="coin3" parent="." index="35" instance=ExtResource( 24 )]
 
 position = Vector2( 120, -168 )
+
+[node name="coin4" parent="." index="36" instance=ExtResource( 24 )]
+
+position = Vector2( -272, -106 )
+
+[node name="coin5" parent="." index="37" instance=ExtResource( 24 )]
+
+position = Vector2( -257, -106 )
+
+[node name="coin6" parent="." index="38" instance=ExtResource( 24 )]
+
+position = Vector2( -241, -106 )
+
+[node name="coin7" parent="." index="39" instance=ExtResource( 24 )]
+
+position = Vector2( -89, 23 )
+
+[node name="coin8" parent="." index="40" instance=ExtResource( 24 )]
+
+position = Vector2( -103, 23 )
+
+[node name="coin9" parent="." index="41" instance=ExtResource( 24 )]
+
+position = Vector2( -117, 23 )
+
+[node name="coin10" parent="." index="42" instance=ExtResource( 24 )]
+
+position = Vector2( 47, -79 )
+
+[node name="coin11" parent="." index="43" instance=ExtResource( 24 )]
+
+position = Vector2( 175, -107 )
+
+[node name="coin12" parent="." index="44" instance=ExtResource( 24 )]
+
+position = Vector2( 144, 14 )
+
+[node name="coin13" parent="." index="45" instance=ExtResource( 24 )]
+
+position = Vector2( 606, -138 )
+
+[node name="coin14" parent="." index="46" instance=ExtResource( 24 )]
+
+position = Vector2( 592, -138 )
+
+[node name="coin15" parent="." index="47" instance=ExtResource( 24 )]
+
+position = Vector2( 578, -138 )
+
+[node name="mainSong" type="AudioStreamPlayer" parent="." index="48"]
+
+stream = ExtResource( 25 )
+volume_db = -2.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 

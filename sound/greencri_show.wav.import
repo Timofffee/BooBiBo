@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/greencri_show.wav-e85d9119570e5f404b8f52b588655d39.sample"
+
+[deps]
+
+source_file="res://sound/greencri_show.wav"
+source_md5="19d32fc93c7320968f4cf4ed0d022ff1"
+
+dest_files=[ "res://.import/greencri_show.wav-e85d9119570e5f404b8f52b588655d39.sample" ]
+dest_md5="258a84da73c8b10b12b517077066a131"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=0
