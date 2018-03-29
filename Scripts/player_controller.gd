@@ -5,15 +5,18 @@ const LOW_GRAVITY_VEC = Vector2(0,50)
 const FLOOR_NORMAL = Vector2(0,-1)
 const SLOPE_SLIDE_STOP = 15.0
 const MIN_ONAIR_TIME = 0.1
+const MAX_AFTERAIR_TIME = 0.25
 const WALK_SPEED = 150 # pixels/sec
 const JUMP_SPEED = 300
 const SIDING_CHANGE_SPEED = 10
 const BULLET_VELOCITY = 1000
 const SHOOT_TIME_SHOW_WEAPON = 0.2
-const MIN_NO_WALL_TIME = 0.5
+const MIN_NO_WALL_TIME = 0.75
 
 var gravity = GRAVITY_VEC
 var linear_vel = Vector2()
+var air_speed = 0
+var afterair_time = 0
 var onair_time = 0 #
 var on_floor = false
 var shoot_time=99999 #time since last shot
@@ -32,10 +35,15 @@ var enemy = null
 onready var ray_wall_r = $'check_wall_r'
 onready var ray_wall_l = $'check_wall_l'
 onready var sprite = $'body'
+onready var audio = $'audio_player'
 
 var can_wall_jump = true
 
 export(int, 1,2) var player_id = 1
+
+var audio_jump = preload('res://sound/jump.ogg')
+var audio_landing = preload('res://sound/landing.ogg')
+
 
 #cache the sprite here for fast access (we will set scale to flip it often)
 
@@ -75,8 +83,10 @@ func _physics_process(delta):
 	linear_vel = move_and_slide( linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP )
 	# Detect Floor
 	if (is_on_floor()):
-		onair_time=0
-
+		onair_time = 0
+	
+	if on_floor == false and onair_time < MIN_ONAIR_TIME:
+		play_audio(audio_landing)
 	on_floor = onair_time < MIN_ONAIR_TIME
 
 	### CONTROL ###
@@ -94,26 +104,40 @@ func _physics_process(delta):
 					if (Input.is_action_pressed('move_left_' + str(player_id))):
 						linear_vel.y=-JUMP_SPEED*1.2
 						target_speed += -2
+						air_speed += clamp(air_speed + 0.01, 0, 1)
 						can_wall_jump = false
+						play_audio(audio_jump)
 						gravity = GRAVITY_VEC
+						ray_wall_r.set_enabled(false)
+						get_tree().create_timer(0.25).connect('timeout', ray_wall_r, 'set_enabled', [true])
 					elif can_wall_jump:
 						linear_vel.y=-JUMP_SPEED*1.1
 						target_speed += -2
 						can_wall_jump = false
+						play_audio(audio_jump)
 						gravity = GRAVITY_VEC
+						ray_wall_r.set_enabled(false)
+						get_tree().create_timer(0.25).connect('timeout', ray_wall_r, 'set_enabled', [true])
 				
 			elif ray_wall_l.is_colliding():
 				if Input.is_action_pressed('jump_' + str(player_id)):
 					if (Input.is_action_pressed('move_right_' + str(player_id))):
 						linear_vel.y=-JUMP_SPEED*1.2
 						target_speed += 2
+						air_speed += clamp(air_speed + 0.01, 0, 1)
 						can_wall_jump = false
+						play_audio(audio_jump)
 						gravity = GRAVITY_VEC
+						ray_wall_l.set_enabled(false)
+						get_tree().create_timer(0.25).connect('timeout', ray_wall_l, 'set_enabled', [true])
 					elif can_wall_jump:
 						linear_vel.y=-JUMP_SPEED*1.1
 						target_speed += 2
 						can_wall_jump = false
+						play_audio(audio_jump)
 						gravity = GRAVITY_VEC
+						ray_wall_l.set_enabled(false)
+						get_tree().create_timer(0.25).connect('timeout', ray_wall_l, 'set_enabled', [true])
 			else:
 				wall_slide = false
 				no_wall_time = 0
@@ -132,19 +156,25 @@ func _physics_process(delta):
 		if enemy != null:
 			target_speed = Vector2(position.x - enemy.position.x, 0).normalized().x * 10
 		damage = false
-		
 		linear_vel.y=-JUMP_SPEED/2
 	
-	target_speed *= WALK_SPEED
+	if afterair_time > MAX_AFTERAIR_TIME:
+		air_speed = 0
+	
+	target_speed = (target_speed + target_speed* air_speed) * WALK_SPEED
+	
 	if on_floor or on_wall:
+		afterair_time += delta
 		linear_vel.x = lerp( linear_vel.x, target_speed, 0.25 )
 	else:
+		afterair_time = 0
 		linear_vel.x = lerp( linear_vel.x, target_speed, 5 * delta )
 	# Jumping
 	if (on_floor and Input.is_action_just_pressed('jump_' + str(player_id))):
 		can_wall_jump = false
 		linear_vel.y=-JUMP_SPEED
-#		get_node("sound_jump").play()
+		air_speed = clamp(air_speed + 0.01, 0, 1)
+		play_audio(audio_jump)
 
 	# Shooting
 
@@ -209,6 +239,14 @@ func _physics_process(delta):
 	if position.y > 200:
 		damage (9999, self)
 
+
+func play_audio(sample):
+	if sample is AudioStreamOGGVorbis or sample is AudioStreamSample or sample is AudioStreamRandomPitch:
+		if audio.stream.audio_stream != sample:
+			audio.stream.audio_stream = sample
+		audio.play()
+
+
 func die():
 	if has_node('../cameras/cam'):
 		$'../cameras/cam'.targets.erase(self)
@@ -231,5 +269,5 @@ func _ready():
 func _on_floor_kill_body_entered( body ):
 	if body.has_method('damage'):
 		body.damage(1.0)
-		linear_vel.y=-JUMP_SPEED
+		linear_vel.y = -JUMP_SPEED
 	

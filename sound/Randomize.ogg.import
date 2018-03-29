@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Randomize.ogg-14dbb1f57f13789ed8449d15101b90d5.oggstr"
+
+[deps]
+
+source_file="res://sound/Randomize.ogg"
+source_md5="6534c321682b7c3e47edde4619e22f23"
+
+dest_files=[ "res://.import/Randomize.ogg-14dbb1f57f13789ed8449d15101b90d5.oggstr" ]
+dest_md5="f25053b76a4f1cae6aa39966ffceef0b"
+
+[params]
+
+loop=false
+loop_offset=0

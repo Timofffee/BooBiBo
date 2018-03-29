@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Art/player_boo.png" type="Texture" id=2]
@@ -285,6 +285,10 @@ _sections_unfolded = [ "Color", "Initial Velocity", "Scale", "Spread" ]
 custom_solver_bias = 0.0
 extents = Vector2( 4, 1 )
 
+[sub_resource type="AudioStreamRandomPitch" id=12]
+
+random_pitch = 1.2
+
 [node name="player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
@@ -365,7 +369,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 8
+collision_mask = 1032
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
@@ -381,7 +385,7 @@ visible = false
 position = Vector2( 5, 0 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 2, 0 )
+cast_to = Vector2( 1, 0 )
 collision_mask = 1
 
 [node name="check_wall_l" type="RayCast2D" parent="." index="6"]
@@ -390,20 +394,19 @@ visible = false
 position = Vector2( -5, 0 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( -2, 0 )
+cast_to = Vector2( -1, 0 )
 collision_mask = 1
 
 [node name="check_platform" type="RayCast2D" parent="." index="7"]
 
-visible = false
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
+[node name="audio_player" type="AudioStreamPlayer" parent="." index="8"]
 
-stream = null
+stream = SubResource( 12 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0

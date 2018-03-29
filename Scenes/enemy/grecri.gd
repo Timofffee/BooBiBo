@@ -77,6 +77,8 @@ func die_clear():
 	$'update_target_dir'.queue_free()
 	$'col'.queue_free()
 	$'body'.queue_free()
+	$'shower'.queue_free()
+	$'visib'.queue_free()
 
 func damage(val):
 	die()
@@ -96,13 +98,13 @@ func _update_dir ():
 
 
 func _on_visib_screen_entered():
-	if on_screen:
-		$shower.start()
+	if on_screen and has_node('shower'):
+		$'shower'.start()
 		on_screen = false
 
 func _on_visib_screen_exited():
-	if not on_screen:
-		$shower.start()
+	if not on_screen and has_node('shower'):
+		$'shower'.start()
 		on_screen = true
 
 func _ready():
