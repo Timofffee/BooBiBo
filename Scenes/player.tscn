@@ -285,7 +285,7 @@ _sections_unfolded = [ "Color", "Initial Velocity", "Scale", "Spread" ]
 custom_solver_bias = 0.0
 extents = Vector2( 4, 1 )
 
-[node name="player" type="KinematicBody2D" groups=[
+[node name="player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
 
@@ -400,6 +400,14 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = null
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="body_entered" from="floor_kill" to="." method="_on_floor_kill_body_entered"]
 

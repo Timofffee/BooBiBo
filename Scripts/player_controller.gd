@@ -52,7 +52,7 @@ func _physics_process(delta):
 	if (ray_wall_r.is_colliding() or ray_wall_l.is_colliding()) and not on_floor and on_wall:
 		if linear_vel.y > 0:
 			gravity = LOW_GRAVITY_VEC
-			linear_vel.y = 50
+			linear_vel.y = lerp(linear_vel.y, 50, 10* delta)
 		else:
 			gravity = GRAVITY_VEC
 	else:
@@ -81,7 +81,7 @@ func _physics_process(delta):
 
 	### CONTROL ###
 	
-	if Input.is_action_pressed('jump_' + str(player_id)) == false and can_wall_jump == false:
+	if Input.is_action_pressed('jump_' + str(player_id)) == false and can_wall_jump == false and linear_vel.y > 35:
 		can_wall_jump = true
 	
 	# Horizontal Movement
@@ -90,17 +90,30 @@ func _physics_process(delta):
 		if on_wall:
 			wall_slide = true
 			if ray_wall_r.is_colliding():
-				if Input.is_action_pressed('jump_' + str(player_id)) and can_wall_jump:
-					can_wall_jump = false
-					target_speed += -2
-					linear_vel.y=-JUMP_SPEED*1.1
-					gravity = GRAVITY_VEC
+				if Input.is_action_pressed('jump_' + str(player_id)):
+					if (Input.is_action_pressed('move_left_' + str(player_id))):
+						linear_vel.y=-JUMP_SPEED*1.2
+						target_speed += -2
+						can_wall_jump = false
+						gravity = GRAVITY_VEC
+					elif can_wall_jump:
+						linear_vel.y=-JUMP_SPEED*1.1
+						target_speed += -2
+						can_wall_jump = false
+						gravity = GRAVITY_VEC
+				
 			elif ray_wall_l.is_colliding():
-				if Input.is_action_pressed('jump_' + str(player_id)) and can_wall_jump:
-					can_wall_jump = false
-					target_speed += 2
-					linear_vel.y=-JUMP_SPEED*1.1
-					gravity = GRAVITY_VEC
+				if Input.is_action_pressed('jump_' + str(player_id)):
+					if (Input.is_action_pressed('move_right_' + str(player_id))):
+						linear_vel.y=-JUMP_SPEED*1.2
+						target_speed += 2
+						can_wall_jump = false
+						gravity = GRAVITY_VEC
+					elif can_wall_jump:
+						linear_vel.y=-JUMP_SPEED*1.1
+						target_speed += 2
+						can_wall_jump = false
+						gravity = GRAVITY_VEC
 			else:
 				wall_slide = false
 				no_wall_time = 0
@@ -123,7 +136,10 @@ func _physics_process(delta):
 		linear_vel.y=-JUMP_SPEED/2
 	
 	target_speed *= WALK_SPEED
-	linear_vel.x = lerp( linear_vel.x, target_speed, 0.25 )
+	if on_floor or on_wall:
+		linear_vel.x = lerp( linear_vel.x, target_speed, 0.25 )
+	else:
+		linear_vel.x = lerp( linear_vel.x, target_speed, 5 * delta )
 	# Jumping
 	if (on_floor and Input.is_action_just_pressed('jump_' + str(player_id))):
 		can_wall_jump = false
