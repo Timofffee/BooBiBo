@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/enemy/thorns.gd" type="Script" id=1]
+[ext_resource path="res://Art/thorns1.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "loop"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pre:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 2.7, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ), Vector2( 0, -5 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 2 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+
+[node name="thorns" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+timestart = 0
+
+[node name="pre" type="Sprite" parent="." index="0"]
+
+position = Vector2( 0, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="anim" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = "loop"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/loop = SubResource( 1 )
+blend_times = [  ]
+
+[node name="spawn_pos" type="Position2D" parent="." index="2"]
+
+position = Vector2( 0, 2 )
+_sections_unfolded = [ "Transform" ]
+
+

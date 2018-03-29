@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map.png-0ad055f78e25db2ac3f855c65510d3eb.stex"
+path="res://.import/thorns2.png-6c9531f257ee9d0dd78fc761b63041ce.stex"
 
 [deps]
 
-source_file="res://Art/map.png"
-source_md5="a018298f61e04c492f6a2cf8bf15ea58"
+source_file="res://Art/thorns2.png"
+source_md5="76e2b573d62bdcd41ac5833d3201c9ff"
 
-dest_files=[ "res://.import/map.png-0ad055f78e25db2ac3f855c65510d3eb.stex" ]
-dest_md5="5b62e0db07fbde7c148e92310074047d"
+dest_files=[ "res://.import/thorns2.png-6c9531f257ee9d0dd78fc761b63041ce.stex" ]
+dest_md5="e1dac04423f1f48365d8ec783628422d"
 
 [params]
 

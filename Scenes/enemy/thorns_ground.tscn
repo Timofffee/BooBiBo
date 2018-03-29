@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/enemy/thorns_ground.gd" type="Script" id=1]
+[ext_resource path="res://Art/thorns2.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "loop"
+length = 5.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9, 2, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 5 ), Vector2( 0, 5 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("col:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true ]
+}
+
+[node name="thorns_ground_static" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1027
+collision_mask = 1027
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+timestart = 0
+
+[node name="col" type="CollisionPolygon2D" parent="." index="0"]
+
+position = Vector2( 0, 3 )
+build_mode = 0
+polygon = PoolVector2Array( -3, -3, 3, -3, 0, -10 )
+
+[node name="body" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+offset = Vector2( 0, -4 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = "loop"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/loop = SubResource( 1 )
+blend_times = [  ]
+
+[connection signal="body_entered" from="." to="." method="_on_thorns_flying_body_entered"]
+
+

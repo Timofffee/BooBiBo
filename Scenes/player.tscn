@@ -222,7 +222,7 @@ tracks/1/keys = {
 "values": [ PoolVector2Array( -4, -5, 4, -5, 6, 0, 4, 4, -4, 4, -6, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 
 resource_name = "slide"
 length = 0.2
@@ -241,7 +241,7 @@ tracks/0/keys = {
 "values": [ 9, 10 ]
 }
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=10]
 
 render_priority = 0
 trail_divisor = 1
@@ -280,12 +280,12 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color", "Initial Velocity", "Scale", "Spread" ]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 1 )
 
-[node name="player" type="KinematicBody2D" index="0" groups=[
+[node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
 
@@ -329,7 +329,7 @@ anims/falling = SubResource( 5 )
 anims/idle = SubResource( 6 )
 anims/jumping = SubResource( 7 )
 anims/run = SubResource( 8 )
-anims/slide = SubResource( 11 )
+anims/slide = SubResource( 9 )
 next/bounce = "idle"
 next/damage = "idle"
 blend_times = [  ]
@@ -350,7 +350,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 9 )
+process_material = SubResource( 10 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -373,7 +373,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="col" type="CollisionShape2D" parent="floor_kill" index="0"]
 
 position = Vector2( 0, 4 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="check_wall_r" type="RayCast2D" parent="." index="5"]
 

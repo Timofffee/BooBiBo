@@ -33,6 +33,7 @@ onready var ray_wall_r = $'check_wall_r'
 onready var ray_wall_l = $'check_wall_l'
 onready var sprite = $'body'
 
+var can_wall_jump = true
 
 export(int, 1,2) var player_id = 1
 
@@ -79,31 +80,30 @@ func _physics_process(delta):
 	on_floor = onair_time < MIN_ONAIR_TIME
 
 	### CONTROL ###
-
+	
+	if Input.is_action_pressed('jump_' + str(player_id)) == false and can_wall_jump == false:
+		can_wall_jump = true
+	
 	# Horizontal Movement
 	var target_speed = 0
 	if not damage:
 		if on_wall:
 			wall_slide = true
-			if (Input.is_action_pressed('move_left_' + str(player_id))):
-				if ray_wall_l.is_colliding():
-					wall_slide = false
-					no_wall_time = 0
-				elif ray_wall_r.is_colliding():
-					if Input.is_action_pressed('jump_' + str(player_id)):
-						target_speed += -2
-						linear_vel.y=-JUMP_SPEED*1.1
-						gravity = GRAVITY_VEC
-				
-			elif (Input.is_action_pressed('move_right_' + str(player_id))):
-				if ray_wall_r.is_colliding():
-					wall_slide = false
-					no_wall_time = 0
-				elif ray_wall_l.is_colliding():
-					if Input.is_action_pressed('jump_' + str(player_id)):
-						target_speed += 2
-						linear_vel.y=-JUMP_SPEED*1.1
-						gravity = GRAVITY_VEC
+			if ray_wall_r.is_colliding():
+				if Input.is_action_pressed('jump_' + str(player_id)) and can_wall_jump:
+					can_wall_jump = false
+					target_speed += -2
+					linear_vel.y=-JUMP_SPEED*1.1
+					gravity = GRAVITY_VEC
+			elif ray_wall_l.is_colliding():
+				if Input.is_action_pressed('jump_' + str(player_id)) and can_wall_jump:
+					can_wall_jump = false
+					target_speed += 2
+					linear_vel.y=-JUMP_SPEED*1.1
+					gravity = GRAVITY_VEC
+			else:
+				wall_slide = false
+				no_wall_time = 0
 		else:
 			if (Input.is_action_pressed('move_left_' + str(player_id))):
 				target_speed += -1
@@ -126,6 +126,7 @@ func _physics_process(delta):
 	linear_vel.x = lerp( linear_vel.x, target_speed, 0.25 )
 	# Jumping
 	if (on_floor and Input.is_action_just_pressed('jump_' + str(player_id))):
+		can_wall_jump = false
 		linear_vel.y=-JUMP_SPEED
 #		get_node("sound_jump").play()
 
